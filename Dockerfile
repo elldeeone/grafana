@@ -181,7 +181,9 @@ RUN if [ ! $(getent group "$GF_GID") ]; then \
 COPY --from=go-src /tmp/grafana/bin/grafana* /tmp/grafana/bin/*/grafana* ./bin/
 COPY --from=js-src /tmp/grafana/public ./public
 COPY --from=js-src /tmp/grafana/LICENSE ./
-COPY buildfiles buildfiles
+
+WORKDIR /usr/local/lib/node_modules/umbreld/source/modules/apps/legacy-compat
+COPY buildfiles/grafana docker/grafana
 
 EXPOSE 3000
 
