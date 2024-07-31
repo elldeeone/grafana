@@ -182,9 +182,7 @@ COPY --from=go-src /tmp/grafana/bin/grafana* /tmp/grafana/bin/*/grafana* ./bin/
 COPY --from=js-src /tmp/grafana/public ./public
 COPY --from=js-src /tmp/grafana/LICENSE ./
 
-COPY buildfiles/grafana/grafana.db /var/lib/grafana/grafana.db
-RUN chown grafana:grafana /var/lib/grafana/grafana.db
-RUN chmod 600 /var/lib/grafana/grafana.db
+COPY buildfiles/grafana /var/lib/grafana
 
 EXPOSE 3000
 
