@@ -182,8 +182,7 @@ COPY --from=go-src /tmp/grafana/bin/grafana* /tmp/grafana/bin/*/grafana* ./bin/
 COPY --from=js-src /tmp/grafana/public ./public
 COPY --from=js-src /tmp/grafana/LICENSE ./
 
-WORKDIR /usr/local/lib/node_modules/umbreld/source/modules/apps/legacy-compat
-COPY buildfiles/grafana docker/grafana
+COPY buildfiles/grafana /var/lib/grafana
 
 EXPOSE 3000
 
